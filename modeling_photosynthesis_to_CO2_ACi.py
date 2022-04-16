@@ -6,7 +6,7 @@ portable photosynthesis systems. The biochemical model of photosynthetic CO2 ass
 @author: XF
 """
 # Python 3.8
-# V 1.0
+# V 1.1
 
 # Import libraries needed for fitting the A/Ci Curve
 import glob
@@ -302,10 +302,11 @@ def main():
     # 5. Summarize fitting parameters of all files
     merged_fits = pd.concat(all_fits, ignore_index=True)
     merged_fits = merged_fits.set_index('file_name')
-    merged_fits.loc['mean'] = merged_fits.mean()
-    merged_fits.loc['std'] = merged_fits.std()
-    merged_fits.loc['sem'] = merged_fits.sem()
     merged_fits.to_csv(output_path + os.path.sep + 'table_ACi_fitting.csv')
+
+    summary_merged_fits = merged_fits.describe()
+    summary_merged_fits.to_csv(output_path + os.path.sep + 'table_ACi_fitting_stats.csv')
+
     print('Saving summary table of fitting parameters to the output path')
 
     # 6. Compute Cc and get summary statistics for A and Cc across all replicates
@@ -319,7 +320,7 @@ def main():
 
     # 7. Plot measured mean +- sd with the fitted curves 
     # Simulate data with Vcmax, J, Tp, aG, aS from mean of individual fitted parameters
-    mean_fits = merged_fits.loc['mean'].copy(deep=True)
+    mean_fits = merged_fits.mean().copy(deep=True)
     SSR, Vcmax, J, Tp, aG, aS = mean_fits.tolist()
     sim_data = {'Cc': np.linspace(0.1, 200, num=50)}
     df_sim_data = pd.DataFrame(data=sim_data)  # similated data
