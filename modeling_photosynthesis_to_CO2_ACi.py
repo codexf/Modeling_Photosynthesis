@@ -226,11 +226,11 @@ class Model:
         if plot:
             f = plt.figure()  # A plot is generated
             plt.scatter(df['Cc'], df['A'], label='data', color='black')  # plot the raw data
-            plt.plot(df['Cc'], self.calc_Ac(df, Vcmax, aG), color='orange', label='rubisco',
+            plt.plot(df['Cc'], self.calc_Ac(df, Vcmax, aG), color='red', label='rubisco',
                      linestyle=':')  # plot the fitted Ac curve
-            plt.plot(df['Cc'], self.calc_Aj(df, J, aG, aS), color='blue', label='RuBP',
+            plt.plot(df['Cc'], self.calc_Aj(df, J, aG, aS), color='green', label='RuBP',
                      linestyle=':')  # plot the fitted Aj curve
-            plt.plot(df['Cc'], self.calc_Ap(df, Tp, aG, aS), color='green', label="TPU",
+            plt.plot(df['Cc'], self.calc_Ap(df, Tp, aG, aS), color='orange', label="TPU",
                      linestyle=':')  # plot the fitted Ap curve
             plt.plot(df['Cc'], self.calc_A(df, Vcmax, J, Tp, aG, aS), label='fit curve',
                      color='gray')  # plot the fitted A curve
@@ -328,11 +328,11 @@ def main():
     plt.figure()  # A plot is generated
     plt.errorbar(result_21O['Cc_mean'], result_21O['A_mean'], yerr=result_21O['A_std'],
                  fmt='o', markersize=4, capsize=3, color="black", label="Data");
-    plt.plot(df_sim_data['Cc'], model_21O.calc_Ac(df_sim_data, Vcmax, aG), color='orange',
+    plt.plot(df_sim_data['Cc'], model_21O.calc_Ac(df_sim_data, Vcmax, aG), color='red',
              label='Rubisco')  # plot the fitted Ac curve
-    plt.plot(df_sim_data['Cc'], model_21O.calc_Aj(df_sim_data, J, aG, aS), color='blue',
+    plt.plot(df_sim_data['Cc'], model_21O.calc_Aj(df_sim_data, J, aG, aS), color='green',
              label='RuBP')  # plot the fitted Aj curve
-    plt.plot(df_sim_data['Cc'], model_21O.calc_Ap(df_sim_data, Tp, aG, aS), color='green',
+    plt.plot(df_sim_data['Cc'], model_21O.calc_Ap(df_sim_data, Tp, aG, aS), color='orange',
              label="TPU")  # plot the fitted Ap curve
     plt.xlabel('Cc (Pa)')  # Labels the x-axis
     plt.ylabel('A (\u03BCmol $\mathregular{CO_2 \ m^{-2} \ s^{-1})}$')  # Labels the y-axis
