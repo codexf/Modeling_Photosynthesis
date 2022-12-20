@@ -1,4 +1,8 @@
-# Custom scripts from Fu et al
+# Modelling the photosynthetic responses to carbon dioxide concentration and photosynthetic responses during oxygen transients 
+
+This repository contains custom scripts and data for the research article
+
+Fu X, Gregory LM, Weise SE, Walker BJ. Integrated flux and pool size analysis in plant central metabolism reveals unique roles of glycine and serine during photorespiration. Nature Plants. 2022, https://doi.org/10.1038/s41477-022-01294-9
 
 ### 1. Modeling photosynthetic responses to carbon dioxide concentration (*A/Ci* curve)
 
